@@ -32,7 +32,6 @@ for num in numerical_variables:
 #categorical variables
 categorical_variables = ["Gender","Result"]
 for cat in categorical_variables:
-
     print("Frequency counts:", df[cat].value_counts())
     print("Proportions:", df[cat].value_counts())   # ask for proportion**
     print("Mode:", df[cat].mode())
