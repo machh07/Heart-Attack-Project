@@ -9,7 +9,7 @@ import seaborn as sns
 #Import dataset
 df = pd.read_csv("Medicaldataset.csv")
 
-#Preliminary steps
+# 2 Preliminary steps
 #Initial data inspection
 print(df.info())
 print(df.describe())
@@ -18,7 +18,7 @@ print(df.duplicated().value_counts()) #There are no duplicates in this dataset
 #Identify and manage missing values
 print(df.isnull()) #There are no missing values in any of the columns in the dataset.
 
-# Univariate non-graphical EDA
+# 3 Univariate non-graphical EDA
 #numerical values
 numerical_variables =["Age", "Heart rate","Systolic blood pressure" ,"Diastolic blood pressure" , "Blood sugar","CK-MB", "Troponin"]
 for num in numerical_variables:
@@ -33,6 +33,17 @@ for num in numerical_variables:
 categorical_variables = ["Gender","Result"]
 for cat in categorical_variables:
     print("Frequency counts:", df[cat].value_counts())
-    print("Proportions:", df[cat].value_counts())   # ask for proportion**
+    print("Proportions:", df[cat].value_counts(normalize=True)*100)
     print("Mode:", df[cat].mode())
     print("Number of unique categories:", df[cat].nunique())
+    
+for num in numerical_variables:
+    
+ sns.displot(df, x= num ,bins=20)
+ sns.displot(df, x=num ,hue= "Gender") 
+ sns.displot(df, x= num , hue ="Gender" , multiple="stack")
+ sns.displot(df, x= num , hue ="Gender" , multiple="dodge") 
+ sns.displot(df, x= num , hue = "Result" , stat= "density" , common_norm=False) 
+ sns.displot(df, x= num, kind="kde", bw_adjust = 4) 
+ sns.displot(df, x=num ,hue= "Gender", kind="ecdf")
+            
