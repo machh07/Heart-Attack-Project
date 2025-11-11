@@ -36,7 +36,8 @@ for cat in categorical_variables:
     print("Proportions:", df[cat].value_counts(normalize=True)*100)
     print("Mode:", df[cat].mode())
     print("Number of unique categories:", df[cat].nunique())
-    
+#4 Univariate graphical EDA 
+
 for num in numerical_variables:
     
  sns.displot(df, x= num ,bins=20)
