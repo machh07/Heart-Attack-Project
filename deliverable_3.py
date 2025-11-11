@@ -56,4 +56,5 @@ for num in numerical_variables:
  #Once again, we observe a higher proportion of males suffering from heart attacks than females.
  #C
  #With only 2 categorical variables in our dataset, we are unable to generate a three-way frequency table.
+
             
