@@ -14,6 +14,7 @@ df = df[df['Heart rate'] <= 220]
 #Initial data inspection
 print(df.info())
 print(df.describe())
+print(df.nunique())
 #Handle duplicate entries
 print(df.duplicated().value_counts()) #There are no duplicates in this dataset 
 #Identify and manage missing values
@@ -37,7 +38,8 @@ for cat in categorical_variables:
     print("Proportions:", df[cat].value_counts(normalize=True)*100)
     print("Mode:", df[cat].mode())
     print("Number of unique categories:", df[cat].nunique())
-    
+#4 Univariate graphical EDA 
+
 for num in numerical_variables:
     
  sns.displot(df, x= num ,bins=20)
@@ -47,4 +49,15 @@ for num in numerical_variables:
  sns.displot(df, x= num , hue = "Result" , stat= "density" , common_norm=False) 
  sns.displot(df, x= num, kind="kde", bw_adjust = 4) 
  sns.displot(df, x=num ,hue= "Gender", kind="ecdf")
+ 
+ #Multivariate non-graphical EDA
+ #A
+ print(pd.crosstab(df["Gender"],df["Result"])) #We can observe that males (represented by the number 1) are more susceptible to heart attacks than females (represented by the number 0)
+ #Since we only have 2 categorical variables, this is the only outcome possible for a crosstab.
+ #B (Normalize with columns)
+ print(pd.crosstab(df["Gender"],df["Result"], normalize = "columns"))
+ #Once again, we observe a higher proportion of males suffering from heart attacks than females.
+ #C
+ #With only 2 categorical variables in our dataset, we are unable to generate a three-way frequency table.
+
             
