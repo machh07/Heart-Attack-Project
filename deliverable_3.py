@@ -8,6 +8,7 @@ import seaborn as sns
 
 #Import dataset
 df = pd.read_csv("Medicaldataset.csv")
+df = df[df['Heart rate'] <= 220]
 
 # 2 Preliminary steps
 #Initial data inspection
