@@ -85,24 +85,22 @@ plt.show()
 sns.relplot(df, x="Age", y="Troponin", size='CK-MB', hue="Result", col="Gender", kind="scatter" )
 plt.show()
 
+
 #c)
 sns.relplot(df, x="Age", y="Systolic blood pressure", kind="line")
 plt.show()
 
-#d) Standard deviation
+#d) 
 sns.barplot(df, x="Result", y="CK-MB", errorbar="sd")
 plt.show()
 
-#e) linear regression 
+#e) 
 sns.lmplot(df, x='Systolic blood pressure', y='Diastolic blood pressure')
 plt.show()
 
 #6.2 Visualizing categorical data
 #grouping numerical variables into categorical data
-df['grouped_age'] = pd.cut(df['Age'], bins=[14, 30, 50, 80, 108], labels=['Young', 'Adult','Older adults', 'Elderly'])
-df['grouped_sbp'] = pd.cut(df['Systolic blood pressure'], 
-                           bins=[0, 90, 120, 130, 180, 300],
-                           labels=["Low BP", "Normal", "Elevated", " Hypertension","H Crisis"])
+df['grouped_age'] = pd.cut(df['Age'], bins=[14, 30, 50, 80, 109], labels=['Young', 'Adult','Older adults', 'Elderly'])
 
 #a) 
 sns.catplot(df, x='Result', y='Heart rate', jitter=True)
@@ -116,7 +114,6 @@ plt.show()
 sns.catplot(df, x='grouped_age', y='Heart rate', hue='Gender', kind='swarm')
 plt.show()
 
-
 #d) 
 sns.boxplot(df, x="Result", y='Age')
 plt.show()
@@ -124,9 +121,8 @@ plt.show()
 sns.catplot(df, x='Result', y='Age', hue='Gender', kind='box')
 plt.show()
 
-
 #e)
-sns.catplot(df, x='grouped_age', y='Troponin', kind='boxen')
+sns.catplot(df, x='grouped_age', y='Blood sugar', kind='boxen')
 plt.show()
 
 #f)
@@ -146,12 +142,12 @@ plt.show()
 sns.catplot(df, x='Result', y='Age', hue='Gender', errorbar = ('pi', 90), kind='point')
 plt.show()
 
-#j) in each yes and each no catplot kind count 
+#j) 
 sns.catplot(df, x="Result", kind="count")
 
 
 #6.3.Visualizing bivariate distributions 
-# a) Heatmap adjusted bin width
+# a) 
 sns.displot(df, x="Age", y="Heart rate", cbar=True, binwidth = (3, 3) )
 plt.show()
 
